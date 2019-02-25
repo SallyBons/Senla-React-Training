@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task2</title>
+</head>
+
+<body>
+
+    <input type="text" id="input-id">
+    <button id="button-id"> Отправить</button>
+    <div class="main-wrapper">
+        <div class="row"></div>
+
+    </div>
+    <script>
+        let inputSelector = document.querySelector("#input-id");
+        let buttonHandler = document.querySelector("#button-id");
+
+        let squareMaker = () => {
+            let newDiv = document.createElement("div");
+            newDiv.classList.add("square");
+            newDiv.style.backgroundColor = getRandomColor();
+            return newDiv;
+
+
+        }
+        let rowMaker = () => {
+            let newRow = document.createElement("div");
+            newRow.classList.add("row");
+            for (let index = 0; index < inputSelector.value; index++) {
+                newRow.appendChild(squareMaker());
+            }
+            return newRow;
+
+
+        }
+
+        let getRandomColor = () => {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        let Composer = () => {
+            document.querySelector(".main-wrapper").innerHTML = "";
+            if (inputSelector.value > 0 && inputSelector.value <= 30) {
+                for (let index = 0; index < inputSelector.value; index++) {
+                    document.querySelector(".main-wrapper").appendChild(rowMaker());
+                }
+            } else {
+                alert("Вы ввели неверное значение!")
+            }
+
+        }
+        buttonHandler.addEventListener("click", Composer)
+    </script>
+    <style>
+        .square {
+            width: 50px;
+            height: 50px;
+            margin: 20px;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</body>
+
+</html>

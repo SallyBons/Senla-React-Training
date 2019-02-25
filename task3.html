@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task3</title>
+</head>
+
+<body>
+    <input type="text" id="input-id">
+    <button id="button-id"> Отправить</button>
+    <p id="otput-id"></p>
+    <script>
+        let inputSelector = document.querySelector("#input-id");
+        let buttonHandler = document.querySelector("#button-id");
+
+        let wordDetector = () => {
+            let entryString = "";
+
+            entryString = inputSelector.value.trim();
+            let wordArray = entryString.split(" ");
+
+            let minLength = wordArray[0].length;
+
+            wordArray.forEach(element => {
+                if (minLength > element.length) {
+                    minLength = element.length;
+                }
+            });
+
+            // as alternative we can use reduce()
+
+            document.getElementById("otput-id").innerHTML = "The shortest length of the word: " + minLength;
+        }
+        buttonHandler.addEventListener("click", wordDetector)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task6</title>
+</head>
+
+<body>
+    <script>
+        let frame = (wordArray, divider) => {
+            if (wordArray && wordArray.length) {
+
+                let maxFrameLength = longestStringForLoop(wordArray) + 4;
+                let firstLine = divider.repeat(maxFrameLength);
+
+                let mainText = "";
+                for (let index = 0; index < wordArray.length; index++) {
+                    let element = wordArray[index];
+                    if (element.length < maxFrameLength - 4) {
+                        element = element + " ".repeat(maxFrameLength - 4 - element.length)
+                    }
+                    mainText = mainText + divider + " " + element + " " + divider + '\n';
+
+                }
+
+                return firstLine + '\n' + mainText + firstLine;
+            } else {
+                console.log("Вы ввели неверное значение")
+            }
+        }
+
+        let longestStringForLoop = (arr) => {
+            let word = "";
+            for (let i = 0; i < arr.length; i++) {
+                if (word.length < arr[i].length) {
+                    word = arr[i];
+                }
+            }
+            return word.length;
+        }
+    </script>
+</body>
+
+</html>
